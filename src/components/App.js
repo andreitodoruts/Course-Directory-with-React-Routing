@@ -1,9 +1,11 @@
 import React from 'react';
 import {
 	BrowserRouter,
-	Route
+	Route,
+	Switch
 } from 'react-router-dom';
 
+import NotFound from './NotFound';
 import Header from './Header';
 import Home from './Home';
 import About from './About';
@@ -14,10 +16,13 @@ const App = () => (
   <BrowserRouter>
 	  <div className="container">
   		<Header />
-	  	<Route exact path="/" component={Home} />
-	  	<Route path="/about" render={() => <About title="About from app" />} />
-	  	<Route path="/teachers" component={Teachers} />
-	  	<Route path="/courses" component={Courses} />
+  		<Switch>
+		  	<Route exact path="/" component={Home} />
+		  	<Route path="/about" render={() => <About title="About from app" />} />
+		  	<Route path="/teachers" component={Teachers} />
+		  	<Route path="/courses" component={Courses} />
+		  	<Route component={NotFound}/>
+	  	</Switch>
 	  </div>
   </BrowserRouter>
 );
